@@ -87,7 +87,7 @@ function randomAI(color) {
     //do for all squares
     for (var j = 0; j < 8; j++) {
       for (var i = 0; i < 8; i++) {
-        //if one of the color's pieces
+        //if piece is the correct color and can move
         if (typeof positions[i][j] == "object" && positions[i][j].color == color && Date.now() - positions[i][j].lastMoved >= timeBetweenMoves) {
           //get it's moves (in the form newX,newY)
           temp=positions[i][j].giveMoves();
