@@ -28,7 +28,7 @@ function Board(whitePlayer,blackPlayer) {
   this.timer;
   this.timeBetweenMoves = 5000; //constant
   this.start = function(timerLength){
-    var parent = this;
+    let parent = this;
     this.resetPieces();
     this.timer = setInterval(function() {
       if (timerLength > 0) {
@@ -39,7 +39,7 @@ function Board(whitePlayer,blackPlayer) {
         parent.playing = true;
         parent.whitePlayer.emit("message","");
         parent.blackPlayer.emit("message","");
-        clearInterval(this.timer);
+        clearInterval(parent.timer);
       }
     }, 1000);
     this.whitePlayer.emit("match found","white");
@@ -65,7 +65,8 @@ function Board(whitePlayer,blackPlayer) {
       receiveMove(oldX,oldY,newX,newY,1,parent)
     });
   };
-  //puts the pieces in the starting position piece name(owner,colour white for 0 or black for 1,x coordinate,y coordinate)
+
+  //resets board to starting position
   this.resetPieces = function() {
     this.positions = new Array(7);
     common.resetPieces(this.positions, this);

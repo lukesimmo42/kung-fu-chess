@@ -28,6 +28,7 @@ exports.resetPieces = function(positions, owner) {
   }
 };
 
+//Checks squares in a line adding them to moves until the function hits a piece
 function giveLine(piece, moves, xDirection, yDirection){
   let x = piece.location.x + xDirection;
   let y = piece.location.y + yDirection;
@@ -46,12 +47,14 @@ function giveLine(piece, moves, xDirection, yDirection){
     }
   }
 }
+//returns all the moves a piece if it were a bishop (used for bishop and queen)
 function giveAllDiagonals(piece, moves){
   giveLine(piece, moves, 1, 1);
   giveLine(piece, moves, 1, -1);
   giveLine(piece, moves, -1, 1);
   giveLine(piece, moves, -1, -1);
 }
+//returns all the moves a piece if it were a rook (used for rook and queen)
 function giveAllSideways(piece, moves){
   giveLine(piece, moves, 1, 0);
   giveLine(piece, moves, -1, 0);
