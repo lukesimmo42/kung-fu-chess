@@ -2,17 +2,16 @@
     <head>
         <title>Kung-Fu Chess!</title>
         <script src="/socket.io/socket.io.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.js"></script>
+        <script src="/static/p5.js"></script>
+        <script src="/static/common.js"></script>
+        <script src="/static/pieces.js"></script>
         <script src="/static/script.js"></script>
-        <script>
-        </script>
-
         <link rel="stylesheet" type="text/css" href="/static/uistyle.css">
     </head>
     <body onresize="resize()">
         <div id=container>
             <div id="left">
-                <a onclick='socket.emit("quickplay")' class="button1">Quickplay</a>
+                <a onclick='socket.emit("quickplay")' class="button1">Multiplayer</a>
                 <a onclick='restart("white", "random AI")' class="button1">Versus Computer</a>
                 <a onclick='restart("white", "random AI versus random AI")' class="button1">Computer Vs Computer</a>
                 <a onclick='viewOfWhite = !viewOfWhite;' class="button1">Switch View</a>
@@ -27,8 +26,8 @@
                     <img src="/static/ying%20yang.jpg" alt="yingyang" id="yingyang" style="width: 100%;position: absolute;margin: auto;top: 0;left: 0;right: 0;bottom: 0;">
                 </div>
                 <div id="rightButtonHolder" class=holder style="height: 40%;margin-left:0">
-                    <a onclick='' class="button2">Request Draw</a>
-                    <a onclick='' class="button2">Forfeit</a>
+                    <a onclick='socket.emit("Request Draw")' class="button2">Request Draw</a>
+                    <a onclick='socket.emit("Forfeit")' class="button2">Forfeit</a>
                 </div>
             </div>
         </div>
