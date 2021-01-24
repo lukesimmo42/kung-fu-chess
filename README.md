@@ -2,9 +2,7 @@ Multiplayer chess variant.
 The rules are as in chess, apart from x exceptions:
 
    No turns! Each player can make a move at anytime.
-   
    Each piece has a "cool-down": Once a piece has been moved, it cannot move again for x milliseconds.
-   
    Castling and En Passant are not allowed.
    
    
