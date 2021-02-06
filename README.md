@@ -1,4 +1,4 @@
-## Multiplayer chess variant
+## Turnless chess variant with multiplayer
 The rules are as in chess, apart from three exceptions:
 
    * No turns! Each player can make a move at anytime.
