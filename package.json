@@ -1,0 +1,11 @@
+{
+  "name": "Kung-Fu Chess",
+  "version": "0.0.0",
+  "main": "server.js",
+  "author": "Luke Simmons",
+  "dependencies": {
+  "async": "~0.2.8",
+  "express": "~4.17.1",
+  "socket.io": "~0.9.14"
+  }
+}

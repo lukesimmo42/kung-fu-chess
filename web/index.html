@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title>Kung-Fu Chess!</title>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="/static/p5.js"></script>
+        <script src="/static/common.js"></script>
+        <script src="/static/script.js"></script>
+        <link rel="stylesheet" type="text/css" href="/static/uistyle.css">
+    </head>
+    <body onresize="resize()">
+        <div id=container>
+            <div id="left">
+                <button onclick='if(connected){socket.emit("quickplay")}else{message="no connection"}' class="button1">Multiplayer</button>
+                <button onclick='restart("white", "random AI")' class="button1">Versus Computer</button>
+                <button onclick='restart("white", "random AI versus random AI")' class="button1">Computer Vs Computer</button>
+                <button onclick='viewOfWhite = !viewOfWhite;' class="button1">Switch View</button>
+            </div>
+            <div id="middle">
+                <div id="boardHolder" class=holder>
+                    <div id="board"></div>
+                </div>
+            </div>
+            <div id="right">
+                <div id="imageHolder" class=holder style="height: 60%;">
+                    <img src="/static/ying%20yang.jpg" alt="yingyang" id="yingyang" style="width: 100%;position: absolute;margin: auto;top: 0;left: 0;right: 0;bottom: 0;">
+                </div>
+                <div id="rightButtonHolder" class=holder style="height: 40%;margin-left:0">
+                    <a onclick='socket.emit("Request Draw")' class="button2" >Request Draw</a>
+                    <a onclick='socket.emit("Forfeit")' class="button2">Forfeit</a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
