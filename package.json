@@ -5,7 +5,7 @@
   "dependencies": {
     "http": "*",
     "express": "*",
-    "socket.io": "^4.5.2",
+    "socket.io": "^4.5.2"
   },
   "devDependencies": {},
   "scripts": {
