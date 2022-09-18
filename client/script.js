@@ -270,42 +270,37 @@ function displayMessage() {
 //io object is declared in the socket.io.js library referenced in header
 //connect to the website
 let socket = null;
-if("127.0.0.1" in window.location.href){
-  try{
-    console.log("trying to connect to localhost")
-    socket = io.connect("http://127.0.0.1:8080/");
-    
-    socket.on('message', function (text) {
-      message = text;
-      console.log(message);
-    });
+try {
+  socket = io.connect("http://127.0.0.1:8080/");
 
-    socket.on("match found", function (side) {
-      console.log("match found");
-      restart(side, "multiplayer");
-    });
-    connected = true;
-  } catch(err){
-    console.log("can't connect to localhost")
-  }
-} else if("13.42.18.248" in window.location.href){
-  console.log("trying to connect to ec2")
-  try {
-    socket = io.connect("13.42.18.248:8080");
+  socket.on('message', function (text) {
+    message = text;
+    console.log(message);
+  });
 
-    socket.on('message', function (text) {
-      message = text;
-      console.log(message);
-    });
+  socket.on("match found", function (side) {
+    console.log("match found");
+    restart(side, "multiplayer");
+  });
+  connected = true;
+} catch(err){
+  console.log("can't connect to localhost")
+}
+try {
+  socket = io.connect("13.42.18.248:8080");
 
-    socket.on("match found", function (side) {
-      console.log("match found");
-      restart(side, "multiplayer");
-    });
-    connected = true;
-  } catch(err){
-    console.log("can't connect to ec2 server")
-  }
+  socket.on('message', function (text) {
+    message = text;
+    console.log(message);
+  });
+
+  socket.on("match found", function (side) {
+    console.log("match found");
+    restart(side, "multiplayer");
+  });
+  connected = true;
+} catch(err){
+  console.log("can't connect to ec2 server")
 }
 
 //resets the game
