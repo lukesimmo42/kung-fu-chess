@@ -270,7 +270,7 @@ function displayMessage() {
 //io object is declared in the socket.io.js library referenced in header
 //connect to the website
 let socket = null;
-if("127.0.0.1" in window.location.href){
+if(window.location.href.includes("127.0.0.1")){
   try{
     console.log("trying to connect to localhost")
     socket = io.connect("http://127.0.0.1:8080/");
@@ -288,7 +288,7 @@ if("127.0.0.1" in window.location.href){
   } catch(err){
     console.log("can't connect to localhost")
   }
-} else if("13.42.18.248" in window.location.href){
+} else if(window.location.href.includes("13.42.18.248")){
   console.log("trying to connect to ec2")
   try {
     socket = io.connect("13.42.18.248:8080");
