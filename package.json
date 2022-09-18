@@ -1,11 +1,25 @@
 {
-  "name": "Kung-Fu Chess",
+  "name": "kung-fu-chess",
   "version": "0.0.0",
-  "main": "server.js",
-  "author": "Luke Simmons",
+  "description": "",
   "dependencies": {
-  "async": "~0.2.8",
-  "express": "~4.17.1",
-  "socket.io": "~0.9.14"
-  }
+    "http": "*",
+    "express": "*",
+    "socket.io": "^4.5.2",
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lukesimmo42/kung-fu-chess.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lukesimmo42/kung-fu-chess/issues"
+  },
+  "homepage": "https://github.com/lukesimmo42/kung-fu-chess#readme"
 }

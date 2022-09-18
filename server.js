@@ -1,15 +1,14 @@
 const common = require('./client/common')
-  , http = require('http')
-  //, path = require('path')
-  , express = require('express')
-  , app = express()
-  , server = http.createServer(app)
-  , io = require('socket.io').listen(server);
+const http = require('http')
+// const path = require('path')
+const express = require('express')
+const app = express()
+const server = http.createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(server);
 
 app.use('/static', express.static('client'));
 app.use('/', express.static('./web'));
-
-io.set('log level', 1);
 
 // listen for new web clients:
 server.listen(8080);
@@ -74,13 +73,15 @@ function Board(whitePlayer,blackPlayer) {
 
   this.endGame = function() {
     clearInterval(this.timer);//stops countdown
-    io.sockets.socket(whitePlayer.id).playing = false;//io.sockets prefix is needed otherwise no change happens
-    io.sockets.socket(blackPlayer.id).playing = false;
-    this.whitePlayer.emit("game end");
-    this.blackPlayer.emit("game end");
-    this.whitePlayer.removeAllListeners("move");
-    this.blackPlayer.removeAllListeners("move");
-    boards.splice(boards.indexOf(this));//remove game from array of boards
+    function endGameForPlayer(player){
+      if (io.sockets.sockets.get(player.id) != undefined) {
+        io.sockets.sockets.get(player.id).playing = false;
+        player.emit("game end");
+        player.removeAllListeners("move");
+      }
+    }
+    endGameForPlayer(this.whitePlayer)
+    endGameForPlayer(this.blackPlayer)
     console.log("game ended");
   };
 }
@@ -111,7 +112,7 @@ io.on("connection", function(socket){
           if (playerQueued) {
               boards.push(new Board(playerQueued,socket)); //create new board
               boards[boards.length-1].start(5000); //make the board start playing in 5000 milliseconds
-              io.sockets.socket(playerQueued.id).playing = true;
+              io.sockets.sockets.get(playerQueued.id).playing = true;
               socket.playing = true;
               playerQueued = undefined;
           } else {
