@@ -10,10 +10,7 @@ The rules are as in chess, apart from three exceptions:
 
 * No turns! Each player can make a move at anytime.
 * Each piece has a "cool-down": Once a piece has been moved, it cannot move again for five seconds.
-* Castling and En Passant are not allowed (but pawns can move two spaces forward on their first move).
-   * No turns! Each player can make a move at anytime.
-   * Each piece has a "cool-down": Once a piece has been moved, it cannot move again for five seconds.
-   * Castling and En Passant are not allowed (but pawns can move two spaces forward on their first move).
+* Castling and En Passant are not allowed (but pawns can still move two spaces forward on their first move).
   
 ## Why did I make Kung-Fu chess?
 
@@ -59,8 +56,18 @@ I used Node.js for the back-end so I didn't need to rewrite the chess logic code
 
 To avoid having copies of the same chess logic functions, I put all the logic into a file called common.js and used a [trick](https://stackoverflow.com/questions/3225251/how-can-i-share-code-between-node-js-and-the-browser?answertab=oldest#tab-top) to allow the file to be used by both the server and browser.
 
-For this project I used prototypes instead of classes. Whereas classes are templates used to create objects, prototypes are objects used to create other objects. To achieve this we create the prototype object, and attach methods and properties to it. Then objects created from it inherit it's methods and properties.
-For this project, instead of using classes I used prototypes. Whereas classes are templates used to create objects, prototypes are objects used to create other objects.
+For this project I used prototypes instead of classes.
+Whereas classes are templates used to create objects, prototypes are objects used to create other objects.
+
+To achieve this we create the prototype object, and attach methods and properties to it.
+Then objects created from the prototype inherit it's methods and properties.
+
+Below is the code for the piece and king prototypes.
+The king inherits from the piece but is in its self a prototype meaning we can create objects with it.
+This leads to much simpler code as I did not need to repeat properties and methods shared by the King, Queen, Pawn etc.
+
+![Image of piece and king prototypes](https://cdn.glitch.global/012076f5-477d-44c9-8198-70b5b9f327fd/piece_prototype.JPG?v=1671557230235 "Piece and king prototypes")
+
 
 ### Phase 4: Testing
 
@@ -78,8 +85,6 @@ M1.7 | Click a square occupied by a friendly piece, while a piece is selected wh
 M1.8 | Click selected square. | Square unselected | Success
 M1.9 | Click any square other than selected square when enemy piece selected. | Square selected | Success
 M1.10 | Resize the browser to be really wide and then really tall. | The webpage scales to fill the available space and board squares can still be selected. | Success
-
-In future I plan to learn to write unit tests for my projects, although this project was simple enough to get away with not using them.
 
 ### Phase 5: Deployment
 
