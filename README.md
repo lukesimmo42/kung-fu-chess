@@ -67,7 +67,6 @@ For this project, instead of using classes I used prototypes. Whereas classes ar
 To test my project I looked at each feature I implemented and created a list of tests for them. Below is a list of tests for the GUI.
 
 Test # | Description | Expected Outcome | Test Result
-# | Description | Expected Outcome | Test Result
 ---|---|---|---
 M1.1 | Click a square occupied by a piece while no square selected. | Square is selected (whenever a square is selected it is shown by highlighting it yellow). | Success
 M1.2 | Click a square not occupied by a piece while no square selected. | Square is selected. | Success
@@ -80,7 +79,7 @@ M1.8 | Click selected square. | Square unselected | Success
 M1.9 | Click any square other than selected square when enemy piece selected. | Square selected | Success
 M1.10 | Resize the browser to be really wide and then really tall. | The webpage scales to fill the available space and board squares can still be selected. | Success
 
-In future I plan to learn to write unit tests for my projects, although this project was simple enough not to need them.
+In future I plan to learn to write unit tests for my projects, although this project was simple enough to get away with not using them.
 
 ### Phase 5: Deployment
 
